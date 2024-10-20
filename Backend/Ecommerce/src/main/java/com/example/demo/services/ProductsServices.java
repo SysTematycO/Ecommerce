@@ -25,7 +25,11 @@ public class ProductsServices {
 	public List<Products> getAllProducts() {
 		return this.riProduct.findAll();
 	}
-
+	
+	public List<Products> getAllProductsPopular() {
+		return this.auditServices.getAllProductsPopular();
+	}
+	
 	public boolean addProduct(DTOProduct dtoProduct) {
 
 		Products products = new Products();

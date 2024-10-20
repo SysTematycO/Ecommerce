@@ -38,17 +38,21 @@ public class ProductsController {
 
 		ArrayNode usersArray = objectMapper.createArrayNode();
 
-		for (Products product : products) {
-			ObjectNode productJson = objectMapper.createObjectNode();
-			productJson.put("idProduct", product.getIdProduct());
-			productJson.put("email", product.getEmail());
-			productJson.put("name", product.getName());
-			productJson.put("description", product.getDescription());
-			productJson.put("price", product.getPrice());
-			productJson.put("publication_date", product.getPublication_date().toString());
-			productJson.put("quantity", product.getQuantity());
-			usersArray.add(productJson);
-		}
+	    products.forEach(product -> usersArray.add(objectMapper.valueToTree(product)));
+
+		return ResponseEntity.ok(usersArray);
+	}
+	
+	@GetMapping("/getAllProductsPopular")
+	public ResponseEntity<ArrayNode> getAllProductsPopular(@RequestHeader("Authorization") String token) {
+
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		List<Products> products = this.productsServices.getAllProductsPopular();
+
+		ArrayNode usersArray = objectMapper.createArrayNode();
+
+	    products.forEach(product -> usersArray.add(objectMapper.valueToTree(product)));
 
 		return ResponseEntity.ok(usersArray);
 	}

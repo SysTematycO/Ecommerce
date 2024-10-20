@@ -8,5 +8,8 @@ export const environment = {
     getAllProducts: '/product/getAllProducts',
     addProduct:'/product/addProduct',
     buyProduct:'/product/buyProduct',
-    deleteProduct:'/product/deleteProduct'
+    deleteProduct:'/product/deleteProduct',
+    getAllProductsPopular:'/product/getAllProductsPopular',
+    getClientPopular:'/audit/getClientPopular',
+    getOffers:'/offers/getOffers'
 };

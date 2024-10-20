@@ -10,12 +10,12 @@ import com.example.demo.models.User;
 import com.example.demo.repositories.RiUsers;
 
 @Service
-public class UserService {
+public class UserServices {
 	
 	@Autowired
     private RiUsers riUsers;
 	
-	public UserService() {}
+	public UserServices() {}
 	
 	public List<Users> getAllUsers() {
         return this.riUsers.findAll();

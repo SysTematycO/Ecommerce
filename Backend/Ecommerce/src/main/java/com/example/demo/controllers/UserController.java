@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entities.Users;
 import com.example.demo.models.User;
-import com.example.demo.services.UserService;
+import com.example.demo.services.UserServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -26,7 +26,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 public class UserController {
 
 	@Autowired
-	private UserService userService;
+	private UserServices userService;
 	
 	@GetMapping("/getAllUsers")
     public ResponseEntity<ArrayNode> getAllUsers(@RequestHeader("Authorization") String token){
@@ -35,15 +35,7 @@ public class UserController {
 
         List<Users> users = this.userService.getAllUsers(); 
         
-        ArrayNode usersArray = objectMapper.createArrayNode();
-
-        for (Users user : users) {
-            ObjectNode userJson = objectMapper.createObjectNode();
-            userJson.put("email", user.getEmail());
-            userJson.put("chain", user.getChain());
-            userJson.put("role", user.getRole());
-            usersArray.add(userJson);
-        }
+        ArrayNode usersArray = objectMapper.valueToTree(users);
         
         return ResponseEntity.ok(usersArray);
     }
