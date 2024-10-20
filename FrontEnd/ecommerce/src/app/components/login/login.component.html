@@ -1,0 +1,22 @@
+<div class="form">
+    <div class="header">
+        <h1>ECOMMERCE</h1>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Ingrese el correo</label>
+            <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="correo" formControlName="email">
+        </div>
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" class="form-control" placeholder="Contraseña" formControlName="chain">
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Ingresar</button>
+    </form>
+
+    @if(errorMessage){
+        <div class="alert alert-danger mt-3" role="alert">
+            {{ errorMessage }}
+        </div>
+    }
+</div>
