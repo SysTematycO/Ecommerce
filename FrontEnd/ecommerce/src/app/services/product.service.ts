@@ -16,6 +16,10 @@ export class ProductService {
         return this.http.get(`${environment.backend}${environment.getAllProducts}`)
     }
 
+    getAllProductsPopular(): Observable<any> {
+      return this.http.get(`${environment.backend}${environment.getAllProductsPopular}`)
+   }
+
     addProduct(product: Product): Observable<any> {
       return this.http.post(`${environment.backend}${environment.addProduct}`, product)
     }
@@ -24,7 +28,7 @@ export class ProductService {
       return this.http.put(`${environment.backend}${environment.buyProduct}`, buyProduct)
     }
 
-    deleteProduc(idProduct: string): Observable<any> {
+    deleteProduct(idProduct: string): Observable<any> {
       return this.http.delete(`${environment.backend}${environment.deleteProduct}/${idProduct}`)
     }
 }

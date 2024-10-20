@@ -37,7 +37,12 @@
         </form>
     </div>\
     <div class="d-flex justify-content-end mb-3">
-            <input type="text" class="form-control w-auto" placeholder="Buscar producto..." [(ngModel)]="searchTerm" (input)="filterProducts()">
+        <button class="btn btn-info me-2" (click)="getClientPopular(true)">Clientes Populares</button>
+        <div class="form-check me-2">
+            <input type="checkbox" class="form-check-input" id="bestSellers" [(ngModel)]="showBestSellers" (change)="filterProductsPopular()">
+            <label class="form-check-label" for="bestSellers">Mostrar Más Vendidos</label>
+        </div>
+        <input type="text" class="form-control w-auto" placeholder="Buscar producto..." [(ngModel)]="searchTerm" (input)="filterProducts()">
     </div>
     <div>
         <h3 class="mt-4">Lista de Productos</h3>
@@ -84,6 +89,22 @@
                     {{ this.checkSell }}
                     <button class="btn btn-link" (click)="closePopoverBuy()">Cerrar</button>
                 </div>
+            </div>
+        </div>
+    }
+
+    @if(showInfo){
+        <div class="info-box">
+            <div class="info-content">
+                <h3>Clientes frecuentes</h3>
+                <ul class="list-group">
+                    @for(client of clientsPopular; track $index){
+                    <li class="list-group-item">
+                        {{ client }}
+                    </li>
+                    }
+                </ul>
+                <button class="btn btn-secondary mt-3" (click)="toggleInfo()">Cerrar</button>
             </div>
         </div>
     }

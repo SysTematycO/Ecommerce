@@ -40,7 +40,7 @@ public class SecurityConfig implements WebMvcConfigurer {
 
 	private final String[] getPermitAllEndpoints = { "/login" };
 
-	private final String[] getAuthenticatedEndpoints = { "/user/getAllUsers", "/product/getAllProducts" };
+	private final String[] getAuthenticatedEndpoints = { "/user/getAllUsers", "/product/getAllProducts", "/product/getAllProductsPopular", "/audit/getClientPopular", "/offers/getOffers" };
 
 	private final String[] postAuthenticatedEndpoints = { "/user/addUser", "/product/addProduct" };
 	
