@@ -1,0 +1,30 @@
+.custom-img{
+    width: 150px; 
+    height: auto;
+}
+
+.popover-container {
+    position: fixed;  
+    top: 50%;       
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    z-index: 1050;
+}
+
+.info-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 20px;
+    width: 300px;
+}
+
+.info-content {
+    text-align: center;
+}
